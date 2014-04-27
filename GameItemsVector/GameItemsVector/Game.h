@@ -12,6 +12,10 @@
 #define MAX_ITEMS 244
 #define MAX_ENEMIES 4
 
+// need to confirm the change to allow the define that is used for collision
+#define COLLISION_DISTANCE 10
+// might be best to have this #define as a static constant
+
 using namespace std;
 
 class Game
@@ -21,7 +25,7 @@ private:
 	unsigned int score;
 
 	//Pointers to access/use enemies, items, player, main menu and highscore menu.
-	Enemy* enemies[MAX_ITEMS];
+	Enemy* enemies[MAX_ENEMIES];
 	Item* items[MAX_ITEMS];
 	Player* pPlayer;
 	Main_Menu* main;
