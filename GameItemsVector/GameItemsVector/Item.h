@@ -19,6 +19,7 @@ public:
 	void setPosition(float , float);
 
 	int getRewardPoints();
+	void setRewardPoints(int);
 
 	bool getPowerUp();
 	void setPowerUp(bool);

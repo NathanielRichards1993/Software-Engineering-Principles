@@ -38,6 +38,12 @@ int Item::getRewardPoints()
 	return rewardPoints;
 }
 ////////////////////////////////////////////////////
+//Sets the reward points to what ever is sent in
+void Item::setRewardPoints(int points)
+{
+	rewardPoints = points;
+}
+////////////////////////////////////////////////////
 // returns the bool state of powerUp
 bool Item::getPowerUp()
 {
