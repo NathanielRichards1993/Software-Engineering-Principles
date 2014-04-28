@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector.h"
+#include "Image.h"
 
 class Actor
 {
@@ -16,6 +17,7 @@ public:
 private:
 
 protected:
+	Image image;
 	Vector position;
 	float speed;
 	bool alive;

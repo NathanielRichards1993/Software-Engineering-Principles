@@ -4,6 +4,14 @@ GLuint Image::texnum[MAX_TEXTURES];
 
 Image::Image()
 {
+	static int ID = 0;
+
+	id = ID;
+
+	width = 0;
+	height = 0;
+
+	ID++;
 }
 
 Image::~Image()
@@ -102,4 +110,14 @@ void Image::draw(float x, float y)
 	glVertex2f(x + width, y);
 
 	glEnd();
+}
+
+int Image::getWidth()
+{
+	return width;
+}
+
+int Image::getHeight()
+{
+	return height;
 }

@@ -1,4 +1,5 @@
 #include "Image.h"
+#include "Game.h"
 
 void init(void);
 void display(void);
@@ -7,6 +8,7 @@ void update(void);
 void keyboard(unsigned char, int, int);
 
 Image pacman;
+Game game;
 
 int main(int argc, char** argv)
 {
@@ -18,15 +20,14 @@ int main(int argc, char** argv)
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Pacman");
 
-	Image::init();
+	//pacman.loadTexture("pacman.bmp");
 
-	pacman.loadTexture("Pacman.bmp");
-	pacman.draw(10,10);
+	game.loadLevel("MAP.txt");
 
-	//init();
+	init();
 
 	//Glut functions
-	glutIdleFunc(update);
+	glutIdleFunc(update);//calls the update function when glut main loop is idle, update then in turn calls postredisplay which calls through to game.draw();
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard);
@@ -37,14 +38,15 @@ int main(int argc, char** argv)
 
 void init()//wrapper to call through to game.init() for enemy/player initilisation
 {
-	//game.init();
+	game.init();
 }
 
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-	//game.draw();
+	game.draw();
+	pacman.draw(10,10);
 
 	glutSwapBuffers();
 }

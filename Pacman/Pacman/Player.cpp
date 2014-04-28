@@ -1,7 +1,8 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(int lives)
 {
+	this->lives = lives; 
 }
 
 Player::~Player()
