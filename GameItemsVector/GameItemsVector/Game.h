@@ -1,7 +1,4 @@
 #pragma once
-#pragma once
-
-#include<string>
 
 #include"Item.h"
 #include"Player.h"
@@ -9,7 +6,10 @@
 #include"Main_Menu.h"
 #include"HighScore_Menu.h"
 
-#define MAX_ITEMS 244
+#define MAX_ITEMS 183
+// 4 power ups and the rest are food.
+
+
 #define MAX_ENEMIES 4
 #define MAP_SIZE 19 // Needed for the reading of the the map
 #define OBJECT_DISTANCE 10 // this is used for collision detection between walls players and A.i.
@@ -17,8 +17,6 @@
 // need to confirm the change to allow the define that is used for collision
 #define COLLISION_DISTANCE 10
 // might be best to have this #define as a static constant
-
-using namespace std;
 
 class Game
 {
@@ -39,13 +37,19 @@ private:
 	//moving object, moving direction,stationery object 
 	bool checkCollision(Vector,Vector,Vector);
 
+	Image* wall;
+	Image* blank;
+	Image* food;
+	Image* powerUp;
 public:
 	Game(void);
 	~Game(void);
 
 	int getScore(void);
-	void loadLevel(string);
+	void loadLevel(char*);
 	void update();
 	void KeyBoardInput();
+	void Int();
+	void draw();
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include"Vector.h"
+#include"Image.h"
 
 class Item
 {
@@ -13,12 +14,15 @@ public:
 	Item(Vector, int, bool);
 	~Item(void);
 
-	Vector getPosition();
 	/*x,y*/
+	Vector getPosition();
 	void setPosition(float , float);
 
 	int getRewardPoints();
-	bool getPowerUp();
 
+	bool getPowerUp();
+	void setPowerUp(bool);
+
+	void draw(Image*);
 };
 

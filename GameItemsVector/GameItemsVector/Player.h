@@ -1,6 +1,9 @@
 #pragma once
+#include"Vector.h"
 class Player
 {
+private:
+
 public:
 	Player(void);
 	~Player(void);
@@ -13,7 +16,6 @@ public:
 	void setPosition(float,float);
 	Vector getPosition(void);
 
-	bool getPowerUp();
 	bool getAlive();
 
 	Vector getDirection();
