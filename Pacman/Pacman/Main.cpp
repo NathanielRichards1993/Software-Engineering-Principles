@@ -7,7 +7,6 @@ void reshape(int, int);
 void update(void);
 void keyboard(unsigned char, int, int);
 
-Image pacman;
 Game game;
 
 int main(int argc, char** argv)
@@ -18,11 +17,9 @@ int main(int argc, char** argv)
 	//Window setup
 	glutInitWindowSize(640, 640);
 	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Pacman");
+	glutCreateWindow("Pacman");//create and name the window
 
-	//pacman.loadTexture("pacman.bmp");
-
-	game.loadLevel("MAP.txt");
+	game.loadLevel("MAP.txt");//load the level from file before init(); (init(); relies on the map being loaded into memory)
 
 	init();
 
@@ -46,7 +43,6 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 	game.draw();
-	pacman.draw(10,10);
 
 	glutSwapBuffers();
 }

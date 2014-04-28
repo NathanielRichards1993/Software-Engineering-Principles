@@ -11,6 +11,8 @@ public:
 	void setPosition(float, float);
 	Vector getPosition();
 
+	void loadTexture(char*);
+
 	virtual void update() = 0;
 	virtual void draw() = 0;
 

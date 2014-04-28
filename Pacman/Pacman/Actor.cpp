@@ -18,3 +18,8 @@ Vector Actor::getPosition()
 {
 	return position;
 }
+
+void Actor::loadTexture(char* filename)//callthrough function for ease of loading enemy and player textures
+{
+	image.loadTexture(filename);
+}

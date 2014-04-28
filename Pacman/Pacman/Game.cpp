@@ -152,10 +152,10 @@ void Game::init()
 	{
 		for(int i = 0; i < MAP_SIZE; i++)
 		{
-			if(mapArray[j][i] == '0' || mapArray[j][i] == 'X')
+			if(mapArray[j][i] == '0' || mapArray[j][i] == 'X' || mapArray[j][i] == 'P')
 			{
-				items[itemCounter]->setPosition(i,j);
-				itemCounter++;
+				items[itemCounter]->setPosition((i)*(PICTURE_SIZE),(j)*(PICTURE_SIZE));
+				items[itemCounter]->setRewardPoints(10);
 				if(mapArray[j][i] == 'X')
 				{
 					items[itemCounter]->setPowerUp(true);
@@ -164,15 +164,16 @@ void Game::init()
 				{
 					// nothing power up state shold already be set to false.
 				}
+				itemCounter++;
 			}
 			else if(mapArray[j][i] == 'S')
 			{
-				enemies[enemyCounter]->setPosition(j,i);
+				enemies[enemyCounter]->setPosition((j)*(PICTURE_SIZE),(i)*(PICTURE_SIZE));
 				enemyCounter++;
 			}
-			else if(mapArray[j][i] == 'P')
+			if(mapArray[j][i] == 'P')
 			{
-				pPlayer->setPosition(j,i);
+				pPlayer->setPosition((j)*(PICTURE_SIZE),(i)*(PICTURE_SIZE));
 			}
 		}
 	}
@@ -181,6 +182,12 @@ void Game::init()
 	blank->loadTexture("blank.bmp");
 	food->loadTexture("food.bmp");
 	powerUp->loadTexture("powerUp.bmp");
+	pPlayer->loadTexture("player.bmp");
+
+	for(int i = 0; i < MAX_ENEMIES; i ++)
+	{
+		enemies[i]->loadTexture("enemy1.bmp");
+	}
 
 }
 ////////////////////////////////////////////////////////////////

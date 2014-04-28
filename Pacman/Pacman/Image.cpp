@@ -4,21 +4,21 @@ GLuint Image::texnum[MAX_TEXTURES];
 
 Image::Image()
 {
-	static int ID = 0;
+	static int ID = 0;//set id as static int so that each new image will have a different id
 
-	id = ID;
+	id = ID;//set the image id to the new id
 
-	width = 0;
-	height = 0;
+	width = 0;//width of image
+	height = 0;//height of image
 
-	ID++;
+	ID++;//increment the id so each new one is different
 }
 
 Image::~Image()
 {
 }
 
-void Image::init()
+void Image::init()//enable openGL texturing and generate the max amount 
 {
 	glEnable(GL_TEXTURE_2D);
 
@@ -49,7 +49,7 @@ bool Image::loadTexture(string filename)
 
 	fseek(f, bitmapHeader.bfOffBits, SEEK_SET);
 
-	image = (unsigned char*)malloc(bitmapHeaderInfo.biSizeImage);
+	image = (unsigned char*)malloc(bitmapHeaderInfo.biSizeImage);//allocate enough memory for the image
 
 	if(!image)
 	{
@@ -59,7 +59,7 @@ bool Image::loadTexture(string filename)
 		return false;
 	}
 
-	fread(image, 1, bitmapHeaderInfo.biSizeImage, f);
+	fread(image, 1, bitmapHeaderInfo.biSizeImage, f);//read the image into memory
 
 	if(image == NULL)
 	{
@@ -78,46 +78,48 @@ bool Image::loadTexture(string filename)
 
 	fclose(f);
 
-	width = bitmapHeaderInfo.biWidth;
-	height = bitmapHeaderInfo.biHeight;
+	width = bitmapHeaderInfo.biWidth;//set width to the pixel width of the bitmap
+	height = bitmapHeaderInfo.biHeight;//set height to the pixel height of the bitmap
 
 	glBindTexture(GL_TEXTURE_2D, texnum[id]);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	glTexImage2D(GL_PROXY_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 
 	return true;
 }
 
-void Image::draw(float x, float y)
+void Image::draw(float x, float y)//create the image plane and bind texture
 {
 	glBindTexture(GL_TEXTURE_2D, texnum[id]);
 
 	glBegin(GL_QUADS);
 	
-	glTexCoord2i(0, 1);
+	//Texture coords for the image plane
+
+	glTexCoord2i(0, 1); //bottom left
 	glVertex2f(x,y);
 
-	glTexCoord2i(0, 0);
+	glTexCoord2i(0, 0); //top left
 	glVertex2f(x, y + height);
 
-	glTexCoord2i(1, 0);
+	glTexCoord2i(1, 0); //top right
 	glVertex2f(x + width, y + height);
 
-	glTexCoord2i(1, 1);
+	glTexCoord2i(1, 1); //bottom right
 	glVertex2f(x + width, y);
 
 	glEnd();
 }
 
-int Image::getWidth()
+int Image::getWidth()//returns the image width for positioning offset
 {
 	return width;
 }
 
-int Image::getHeight()
+int Image::getHeight()//returns the image height for positioning offset
 {
 	return height;
 }

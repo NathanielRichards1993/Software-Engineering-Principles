@@ -17,6 +17,7 @@ public:
 	/*x,y*/
 	Vector getPosition();
 	void setPosition(float , float);
+	void setRewardPoints(int);
 
 	int getRewardPoints();
 
