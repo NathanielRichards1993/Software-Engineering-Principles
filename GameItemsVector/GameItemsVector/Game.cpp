@@ -12,6 +12,11 @@ Game::Game(void)
 		items[i] = new Item(vector,0,false);
 	}
 
+	for(int i = 0; i<MAX_ENEMIES; i++)
+	{
+		enemies[i] = new Enemy();
+	}
+
 	//create player and sets it's score to 0.
 	pPlayer = new Player();
 	pPlayer->setPosition(0,0);
