@@ -6,10 +6,10 @@
 #include"Main_Menu.h"
 #include"HighScore_Menu.h"
 
-#define MAX_ITEMS 183
+#define MAX_ITEMS 184
 // 4 power ups and the rest are food.
 
-
+#define PICTURE_SIZE 32
 #define MAX_ENEMIES 4
 #define MAP_SIZE 19 // Needed for the reading of the the map
 #define OBJECT_DISTANCE 10 // this is used for collision detection between walls players and A.i.
