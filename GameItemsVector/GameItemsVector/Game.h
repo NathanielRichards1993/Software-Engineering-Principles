@@ -13,6 +13,7 @@
 #define MAX_ENEMIES 4
 #define MAP_SIZE 19 // Needed for the reading of the the map
 #define OBJECT_DISTANCE 10 // this is used for collision detection between walls players and A.i.
+#define PICTURE_SIZE 32
 
 // need to confirm the change to allow the define that is used for collision
 #define COLLISION_DISTANCE 10

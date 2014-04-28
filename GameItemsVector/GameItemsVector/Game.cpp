@@ -147,7 +147,7 @@ void Game::Int()
 		{
 			if(mapArray[j][i] == '0' || mapArray[j][i] == 'X')
 			{
-				items[itemCounter]->setPosition(i,j);
+				items[itemCounter]->setPosition(i*(PICTURE_SIZE),j*(PICTURE_SIZE));
 				itemCounter++;
 				if(mapArray[j][i] == 'X')
 				{
@@ -160,12 +160,12 @@ void Game::Int()
 			}
 			else if(mapArray[j][i] == 'S')
 			{
-				enemies[enemyCounter]->setPosition(j,i);
+				enemies[enemyCounter]->setPosition(j*(PICTURE_SIZE),i*(PICTURE_SIZE));
 				enemyCounter++;
 			}
 			else if(mapArray[j][i] == 'P')
 			{
-				pPlayer->setPosition(j,i);
+				pPlayer->setPosition(j*(PICTURE_SIZE),i*(PICTURE_SIZE));
 			}
 		}
 	}
