@@ -10,10 +10,6 @@ Player::~Player(void)
 {
 }
 
-Player::Player(int)
-{
-}
-
 bool Player::getPowerUp(void)
 {
 	return true; 

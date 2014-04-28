@@ -13,7 +13,7 @@ Game::Game(void)
 	}
 
 	//create player and sets it's score to 0.
-	pPlayer = new Player(0);
+	pPlayer = new Player();
 	pPlayer->setPosition(0,0);
 
 	//2 menu created which 1 gives keyboard control.
@@ -147,7 +147,7 @@ void Game::Int()
 		{
 			if(mapArray[j][i] == '0' || mapArray[j][i] == 'X')
 			{
-				items[itemCounter]->setPosition(i*(PICTURE_SIZE),j*(PICTURE_SIZE));
+				items[itemCounter]->setPosition((i+1)*(PICTURE_SIZE),(j+1)*(PICTURE_SIZE));
 				itemCounter++;
 				if(mapArray[j][i] == 'X')
 				{
@@ -160,12 +160,12 @@ void Game::Int()
 			}
 			else if(mapArray[j][i] == 'S')
 			{
-				enemies[enemyCounter]->setPosition(j*(PICTURE_SIZE),i*(PICTURE_SIZE));
+				enemies[enemyCounter]->setPosition((j+1)*(PICTURE_SIZE),(i+1)*(PICTURE_SIZE));
 				enemyCounter++;
 			}
 			else if(mapArray[j][i] == 'P')
 			{
-				pPlayer->setPosition(j*(PICTURE_SIZE),i*(PICTURE_SIZE));
+				pPlayer->setPosition((j+1)*(PICTURE_SIZE),(i+1)*(PICTURE_SIZE));
 			}
 		}
 	}
@@ -207,7 +207,7 @@ void Game::draw()
 		{
 			if(mapArray[j][i] == '1')
 			{
-				wall->draw(i,j);
+				wall->draw((i+1)*(PICTURE_SIZE),(j+1)*(PICTURE_SIZE));
 			}
 		}
 	}
