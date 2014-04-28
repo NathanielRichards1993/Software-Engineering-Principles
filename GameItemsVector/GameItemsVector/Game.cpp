@@ -12,13 +12,13 @@ Game::Game(void)
 		items[i] = new Item(vector,0,false);
 	}
 
-	for(int i = 0; i<MAX_ENEMIES; i++)
+	for(int i = 0; i< MAX_ENEMIES; i++)
 	{
-		enemies[i] = new Enemy();
+		enemies[i] = new Enemy(1);
 	}
 
 	//create player and sets it's score to 0.
-	pPlayer = new Player();
+	pPlayer = new Player(0);
 	pPlayer->setPosition(0,0);
 
 	//2 menu created which 1 gives keyboard control.
@@ -140,8 +140,10 @@ bool Game::checkCollision(Vector movingObject,Vector movingDirection,Vector stat
 }
 ///////////////////////////////////////////////////////////////
 //should set where all items are and also where the enemies spawn and player spawns. 
-void Game::Int()
+void Game::init()
 {
+	Image::init();
+
 	int itemCounter = 0;
 	int enemyCounter = 0;
 	//items are x or 1, player is P and enemy spawn is S
@@ -152,7 +154,7 @@ void Game::Int()
 		{
 			if(mapArray[j][i] == '0' || mapArray[j][i] == 'X')
 			{
-				items[itemCounter]->setPosition((i+1)*(PICTURE_SIZE),(j+1)*(PICTURE_SIZE));
+				items[itemCounter]->setPosition(i,j);
 				itemCounter++;
 				if(mapArray[j][i] == 'X')
 				{
@@ -165,12 +167,12 @@ void Game::Int()
 			}
 			else if(mapArray[j][i] == 'S')
 			{
-				enemies[enemyCounter]->setPosition((j+1)*(PICTURE_SIZE),(i+1)*(PICTURE_SIZE));
+				enemies[enemyCounter]->setPosition(j,i);
 				enemyCounter++;
 			}
 			else if(mapArray[j][i] == 'P')
 			{
-				pPlayer->setPosition((j+1)*(PICTURE_SIZE),(i+1)*(PICTURE_SIZE));
+				pPlayer->setPosition(j,i);
 			}
 		}
 	}
@@ -212,7 +214,7 @@ void Game::draw()
 		{
 			if(mapArray[j][i] == '1')
 			{
-				wall->draw((i+1)*(PICTURE_SIZE),(j+1)*(PICTURE_SIZE));
+				wall->draw(i * wall->getWidth(),j * wall->getHeight());
 			}
 		}
 	}
